@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>服务商展示页_万能查</title>
+	<meta name="keywords" content=",万能查">
+	<meta name="description" itemprop="description" content="_万能查_关注有价值的商业信息">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="baidu_union_verify" content="e6967a277abd77a7c56ccede68ce0b97">
+<link rel='icon' href="app/resource/images/logox80.jpg" type='image/x-ico'/>
+<link href="app/resource/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/fonts/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="app/resource/layui/css/layui.css">
+<link href="app/resource/css/member.css" rel="stylesheet" type="text/css" />
+<script src="app/resource/js/jquery.min.js"></script>
+<script src="app/resource/js/jquery.SuperSlide.js"></script>
+<script src="app/resource/js/common.js"></script>
+<script src="app/resource/js/m.js"></script>
+<script src="app/resource/js/clipboard.min.js"></script>
+<script src="app/resource/js/modal.js"></script>
+<script src="app/resource/layer/layer.js"></script>
+	<script src="app/resource/js/bin/jsencrypt.min.js"></script>
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9606766828005336",
+            enable_page_level_ads: true
+        });
+	</script>
+</head>
+<body>
+<div class="header">
+		
+	<div class="topbar">
+		<div class="main clearfix">
+			<div class="wel-box"><a  href="index.html"   style="cursor:pointer;font-size:12px;color:#888888;">欢迎使用万能查</a></div>
+
+			<div class="wel-link"><a href="user-login.html" >登录</a><a href="user-register.html" >注册</a></div>
+		</div>
+	</div>
+
+
+	
+
+
+<style>.card-rts{
+		overflow: hidden;
+		padding-top: 20px;
+	}
+	.card-rts .circle-datas{
+		width: 33.33%;
+		float: left;
+		text-align: center;
+		color: #fff;
+		padding: 10px 0;
+	}
+	.card-rts .circle-datas .c-txt{
+		margin-top: 5px;
+	}
+</style>
+<style type="text/css">/*星星样式*/
+	.star_score { background:url("app/resource/images/stark2.png"); width:100px; height:20px;  position:relative; }
+	.star_score a:hover{ background:url("app/resource/images/stars2.png");left:0;}
+	.star_score a.clibg{ background:url("app/resource/images/stars2.png");left:0;}
+	.atar_Show{background:url("app/resource/images/stark2.png"); width:100px; height:20px;  position:relative; float:left; }
+	.atar_Show p{ background:url("app/resource/images/stars2.png");left:0; height:20px; width:134px;}
+</style>
+<body>
+<script src="app/resource/js/radialIndicator.min.js"></script>
+<script src="app/resource/js/jquery.raty.min.js"></script>
+<div class="rel-tcells">
+	<div class="main">
+		<div class="rel-grids">
+			<div class="rel-grid-lt">
+				<ul class="sv-item-list">
+					<li>服务商名称：<span class="facilitator_name">无</span></li>
+					<li>
+						综 合 权 威： <div id="function-raty" class="target-demo"></div>
+						<span id="demoraty">
+
+</span>
+					</li>
+					<li>服务商主页：  <span class="item-cont facilitator_url"></span></li>
+					<li>服务商QQ： <a   target=blank  href="tencent://message/?uin=3010085965" class="qq"><span class="iconfont icon-qq1"></span></a></li>
+					<li>服务商邮箱：<span class="item-cont email"></span></li>
+				</ul>
+			</div>
+
+			<div class="card-rts">
+				<div class="circle-datas">
+					<div class="circleChart" id="data0"></div>
+					<div class="c-txt">信息产品量</div>
+				</div>
+				<div class="circle-datas">
+					<div class="circleChart" id="data1"></div>
+					<div class="c-txt">信息查询量</div>
+				</div>
+				<div class="circle-datas">
+					<div class="circleChart" id="data2"></div>
+					<div class="c-txt">总收入</div>
+				</div>
+				<div class="circle-datas">
+					<div class="circleChart" id="data3"></div>
+					<div class="c-txt">资料产品量</div>
+				</div>
+				<div class="circle-datas">
+					<div class="circleChart" id="data4"></div>
+					<div class="c-txt">资料下载量</div>
+				</div>
+				<div class="circle-datas">
+					<div class="circleChart" id="data5"></div>
+					<div class="c-txt">产品浏览总数量</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="rel-top">
+			<ul class="rel-tab">
+				<li data-id="allBox" class="active">全部显示</li>
+				<li data-id="infoBox">只显示信息</li>
+				<li data-id="fileBox">只显示资料</li>
+			</ul>
+		</div>
+		<script>
+            $('.rel-tab li').click(function(event) {
+                $(this).addClass('active').siblings('li').removeClass('active');
+                var id = $(this).attr('data-id');
+                if (id == 'allBox') {
+                    $('.rel-pane').show();
+                }else{
+                    $('.rel-pane').hide();
+                    $("#"+id).show();
+                }
+            });
+		</script>
+	</div>
+</div>
+<div class="rel-wrap rel-pane" id="infoBox">
+	<div class="main">
+		<div class="rel-body">
+			<ul class="infocate-list">
+			</ul>
+			<div class="rel-footer">
+				<a href="javascript:;" id="infoMore" class="rel-more">展开更多 <span class="iconfont icon-xiayiye1"></span></a>
+			</div>
+			<div class="rel-footer MessageNodata" style="font-size:16px;display: none; color:#999999;">
+				--------------------- 没有更多信息数据了----------------------
+			</div>
+		</div>
+	</div>
+</div>
+<div class="rel-wrap rel-pane rel-bg-wrap" id="fileBox">
+	<div class="main">
+		<div class="rel-body">
+			<ul class="material-list">
+
+			</ul>
+			<div class="rel-footer">
+				<a href="javascript:;" id="fileMore" class="rel-more">展开更多 <span class="iconfont icon-xiayiye1"></span></a>
+			</div>
+			<div class="rel-footer DatumNodata" style="font-size:16px;display: none; color:#999999;">
+				--------------------- 没有更多资料数据了----------------------
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+    var facilitator_id="2";
+
+    $(function() {
+        $.ajax({
+            type: 'GET',
+            url: "https://www.00110.cn?m=api&c=Facilitator&a=getFacilitatorStatistics" + '&id=' + facilitator_id,
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 1001) {
+                    if(data.data.qq){
+                        $(".qq").attr("href", 'tencent://message/?uin=' + data.data.qq);
+                        $(".icon-qq1").text(data.data.qq);
+					}
+
+                    if(data.data.facilitator_url){
+                        $(".facilitator_url").text(data.data.facilitator_url);
+					}else{
+                        $(".facilitator_url").text('sf-'+facilitator_id+'.html');
+					}
+					if(data.data.email){
+                        $(".email").text(data.data.email);
+					}
+
+                    if(data.data.facilitator_name){
+                        $(".facilitator_name").text(data.data.facilitator_name);
+                    }
+                    showStart(data.data.star);
+                    statistics(data.data);
+                }
+
+            },
+            error: function (xhr, type) {
+            }
+        });
+    });
+    function showSrc(that){
+        $(that).attr("src","https://www.00110.cn/app/resource/images/gs.png");
+    }
+
+
+    function showStart(star){
+        $('#function-raty').raty({
+            half:true,
+            readOnly: true,
+            score:star,
+            path      : 'https://www.00110.cn/app/resource/images/raty',
+            size      : 24,
+            starHalf  : 'star-half-big.png',
+            starOff   : 'star-off-big.png',
+            starOn    : 'star-on-big.png',
+            click: function(score, evt) {
+            }
+        });
+        $('#demoraty').text($('#function-raty').find('input').val());
+    }
+
+    function statistics(data){
+        var memoryjs = $('#data0').radialIndicator({
+            radius: 40,
+            barWidth:6,
+            initValue:data.information_count,
+            minValue: data.information_count/10,
+            maxValue: data.information_count,
+            fontSize:16,
+            fontColor:"#f03838",
+            barColor: '#18aba5',
+            format: '  个'
+        });
+        var memoryjs1 = $('#data1').radialIndicator({
+            radius: 40,
+            barWidth:6,
+            initValue:data.information_queries_sum,
+            minValue: data.information_queries_sum/10,
+            maxValue: data.information_queries_sum,
+            fontSize:16,fontColor:"#f03838",
+            barColor: '#18aba5',
+            format: '  次'
+        });
+        var memoryjs2 = $('#data2').radialIndicator({
+            radius: 40,
+            barWidth:6,
+            initValue:data.order_sum,
+            displayNumber:true,
+            minValue: data.order_sum/10,
+            maxValue: data.order_sum,
+            fontSize:16,
+            fontColor:"#f03838",
+            barColor: '#18aba5',
+            format: '¥ ##,##,#### 元'
+        });
+        var memoryjs3 = $('#data3').radialIndicator({
+            radius: 40,
+            barWidth:6,
+            initValue:data.datum_count,
+            minValue: data.datum_count/10,
+            maxValue: data.datum_count,
+            fontSize:16,
+            fontColor:"#f03838",
+            barColor: '#18aba5',
+            format: '  个'
+        });
+        var memoryjs4 = $('#data4').radialIndicator({
+            radius: 40,
+            barWidth:6,
+            initValue:data.datum_download_sum,
+            minValue: data.datum_download_sum/10,
+            maxValue: data.datum_download_sum,
+            fontSize:16,fontColor:"#f03838",
+            barColor: '#18aba5',
+            format: '  次'
+        });
+        var memoryjs5 = $('#data5').radialIndicator({
+            radius: 40,
+            barWidth:6,
+            initValue:data.total_browse_sum,
+            minValue: data.total_browse_sum/10,
+            maxValue: data.total_browse_sum,
+            fontSize:16,
+            fontColor:"#f03838",
+            barColor: '#18aba5',
+            format: ' 次'
+        });
+        memoryjs.animate(5);
+    }
+
+</script>
+
+<!-- 信息更多 -->
+<script>
+
+    var facilitator_id="2";
+
+
+    $(function(){
+       /**
+		* 获取统计信息
+		*/
+
+
+
+        /*初始化*/
+        var counter = 0; /*计数器*/
+        var current_page = 1; /*offset*/
+        var page_size = 8 /*size*/
+        /*首次加载*/
+        getMassageData(current_page, page_size);
+        /*监听加载更多*/
+        $(document).on('click', '#infoMore', function(){
+            current_page ++;
+            getMassageData(current_page, page_size);
+        });
+        function getMassageData(current_page,page_size){
+            console.log(current_page);
+            //此处演示关闭
+            layer.load(1);
+            $.ajax({
+                type: 'GET',
+                url: "https://www.00110.cn?m=api&c=InformationInquiryTemplet&a=getInquiryList"+ '&facilitator_id=' + facilitator_id + '&current_page='+current_page+"&page_size="+page_size+"&status=1"+"&shelves=1",
+                dataType: 'json',
+                success: function(data){
+                    var div = '';
+                    if(data.code==1001) {
+												console.log(data.data.list)
+                        for (var i = 0; i < data.data.list.length; i++) {
+                            var list = data.data.list;
+                            var  score='<span class="iconfont icon-star"></span>';
+                            for(var j=1;j<list[i].score;j++ ){
+                                score+='<span class="iconfont icon-star"></span>';
+                            }
+
+                            div += '<li>'
+                                + '<div class="infocate-box">'
+                                + '<div class="info-inner">'
+                                + '<div class="i-logo">'
+                                + '<img  style="height:80px;width:80px;" src="https://www.00110.cn/attachment/' + list[i].logo + '" class="img-hover" data-url="' + list[i].logo + '" alt="'+list[i].name+'" onerror="showSrc(this)">'
+                                + '</div>'
+                                + '<div class="i-title"><a target="_blank" href="information-detail-' + list[i].id + '.html">' + list[i].name + '</a></div>'
+                                + '<div class="i-desc">' + list[i].brief_introduction + '</div>'
+                                + '</div>'
+                                + '<div class="i-footer">'
+                                + '<div class="i-meta">'
+                                + '<div class="i-umber"><span class="text-info">查询量</span>  ' + list[i].queries + '次</div>'
+                                + '<div class="i-price"><span class="pbox">￥' + list[i].price + '</span>/次</div>'
+                                + '</div>'
+
+                                + '<div class="i-raty"><span class="text-info">权威评分：'
+                                +score
+                                +'</span><span class="raty-span"> ' + list[i].score + '</span>'
+
+
+                                + '</div>'
+                                + '</div>'
+                                + '<div class="info-page">'
+                             //   + '<a onclick="deleteCollection(this,'+list[i].cid+')"  class="inner-page">删除</a>'
+                                //  + '<a href="" class="inner-page">下一格</a>'
+                                + '</div>'
+                                + '</div>'
+                                + '</li>';
+                        }
+                        /*******************************************/
+                        /*隐藏more*/
+                        if (  current_page >=data.data.pagination.page_count){
+                            $("#infoMore").hide();
+                            $(".MessageNodata").show();
+                        }else{
+                            $("#infoMore").show();
+                            $(".MessageNodata").hide();
+                        }
+                    }else{
+                        $("#fileMore").hide();
+                        $(".DatumNodata").show();
+                    }
+                    $('.infocate-list').append(div);
+
+
+                    layer.closeAll('loading');
+                },
+                error: function(xhr, type){
+                    layer.closeAll('loading');
+                }
+            });
+        }
+    });
+</script>
+
+<!-- 资料更更多 -->
+<script>
+    $(function(){
+        /*初始化*/
+        var counter = 0; /*计数器*/
+        var current_page = 1; /*offset*/
+        var page_size = 8 /*size*/
+        /*首次加载*/
+        getDatumData(current_page, page_size);
+        /*监听加载更多*/
+        $(document).on('click', '#fileMore', function(){
+            current_page ++;
+            //加载层
+
+//            var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+////loading层
+//
+//            var index = layer.load(1, {
+//                shade: [0.1,'#fff'] //0.1透明度的白色背景
+//            });
+            getDatumData(current_page, page_size);
+            // layer.close(index);
+        });
+        function getDatumData(current_page,page_size){
+            layer.load(1);
+            $.ajax({
+                type: 'GET',
+                url: "https://www.00110.cn?m=api&c=Datum&a=getDatumList"+ '&facilitator_id=' + facilitator_id + '&current_page='+current_page+"&page_size="+page_size+"&shelves=1"+"&status=1",
+                dataType: 'json',
+                success: function(data){
+                    var div = '';
+                    if(data.code==1001){
+                        for(var i=0; i<data.data.list.length;i++){
+                            var list=data.data.list;
+                            div +='<li>'
+                                +'<div class="m-icon">'
+                                +'<img style="\n' +
+                                '    width: 50px;\n' +
+                                '    height: 60px;\n" src="https://www.00110.cn/app/resource/images/'+list[i].format_type_name+'.png" alt="'+list[i].name+'">'
+                                +'</div>'
+                                +'<div class="m-content">'
+                                +'<div class="mat-tit" style="overflow:hidden"><a  target="_blank"  href="datum-detail-'+list[i].id+'.html" style="float: left;padding-right: 10px">'+ list[i].name +'</a>'
+								+'<div class="wk" style="float:left;padding-top: 2px;"> <span class="atar_Show"><p tip="'+parseInt(list[i].star)+'" style="width:'+parseInt(list[i].star)*2*10+'px"></p></span><span>'+list[i].star+'星</span></div>'
+                                +'</div>'
+                                +'<div class="mat-desc">'+ list[i].datum_introduction +'</div>'
+                                +'<div class="mat-footer">'
+                                +'<div>类型：'+list[i].format_name+'</div>'
+                                +'<div>大小：'+list[i].size+'M</div>'
+                                +'<div>上传时间：'+list[i].created_time+'</div>'
+                                +'<div>下载量：'+list[i].download+'次</div>'
+                                +'<div>服务商：'+list[i].facilitator_name+'</div>'
+                                +'<div>价格：'+list[i].price+'/次</div>'
+                                +'</div>'
+                                +'<div class="info-page">'
+                            //    +'<a  onclick="deleteCollection(this,'+list[i].cid+')"  class="inner-page">删除</a>'
+                                //                                +'<a href="" class="inner-page">下一格</a>'
+                                +'</div>'
+                                +'</div>'
+                                +'</li>';
+                        }
+                        $('.material-list').append(div);
+                        /*隐藏more*/
+                        if (  current_page >=data.data.pagination.page_count){
+                            $("#fileMore").hide();
+                            $(".DatumNodata").show();
+                        }else{
+                            $("#fileMore").show();
+                            $(".DatumNodata").hide();
+                        }
+                    }else{
+                        $("#fileMore").hide();
+                        $(".DatumNodata").show();
+                    }
+
+
+                    layer.closeAll('loading');
+                },
+                error: function(xhr, type){
+                    layer.closeAll('loading');
+                }
+            });
+        }
+    });
+    /**
+     * 根据资料类型显示图片
+     */
+
+    function  showImage(name){
+        var img="";
+        switch (name){
+            case "WORD":
+                img="word";
+                break;
+            case "EXCEL":
+                img="excel";
+                break;
+            case "PDF":
+                img="pdf";
+                break;
+            case "视频":
+                img="video";
+                break;
+            case "音频":
+                img="music";
+                break;
+            case "图片":
+                img="img";
+                break;
+            case "代码":
+                img="daima";
+                break;
+            case "压缩":
+                img="yasuo";
+                break;
+            case "更多":
+                img="more";
+                break;
+            default :
+                img="more";
+                break;
+        }
+        console.log(img);
+        return img;
+    }
+</script>
+
+
+<!--图标hover-->
+<script>
+	var rsrc ;
+	$('.infocate-box').hover(function () {
+		var surl = $(this).find('.img-hover').attr('data-url')
+        rsrc = $(this).find('.img-hover').attr('src')
+        $(this).find('.img-hover').attr('src',surl)
+    },function () {
+        var scr = $(this).find('.img-hover').attr('src',rsrc)
+    })
+    //显示星星
+	$(function(){
+        $(".wk p").each(function(index, element) {
+            var num=$(this).attr("tip");
+            var www=num*2*10;//
+            $(this).css("width",www);
+            $(this).parent(".atar_Show").siblings("span").text(num+"星");
+        });
+	})
+
+
+</script>
+
+
+<!--万能查服务保障体系-->
+<div class="tx-wrap">
+	<div class="main">
+		<div class="tx-header">万能查服务保障体系</div>
+		<ul class="tx-list">
+			<li>
+				<img src="app/resource/images/end1.png" alt="">
+				<h3>担保交易</h3>
+				<p>全程担保交易，保证用户资金100%安全</p>
+			</li>
+			<li>
+				<img src="app/resource/images/end2.png" alt="">
+				<h3>不满意全额退款</h3>
+				<p>使用产品不满意,可以申请投诉全额退款,确保产品满意度达100%</p>
+			</li>
+			<li>
+				<img src="app/resource/images/end3.png" alt="">
+				<h3>服务全程监控</h3>
+				<p>监管全程透明,产品发布,服务商入住全程审核,保证用户享受100%的服务保障</p>
+			</li>
+			<li>
+				<img src="app/resource/images/end4.png" alt="">
+				<h3>优选服务商</h3>
+				<p>所有服务商数据来源都经过挑选,保证100%优质服务商入住</p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<!--fcooter-->
+<div class="footer">
+	<div class="main">
+		<div class="foot-nav">
+			<a href="help-detail-4-10.html">关于万能查</a>
+			<a href="help-detail-4-19.html">商务合作</a>
+			<a href="help-detail-3-8.html">帮助教程</a>
+			<a href="show404.html">建议反馈</a>
+			<!--<a href="">投诉通道</a>-->
+		</div>
+		<div class="copyrigt">
+			版权所有:Copyright 2018-2020   万能查 <a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#ffffff;">渝ICP备18005295号-3号</a> 人杰网络科技有限公司
+		</div>
+	</div>
+</div>
+<script>
+ 	//百度推荐
+    /*var _hmt = _hmt || [];
+
+    (function() {
+
+        var hm = document.createElement("script");
+
+        hm.src = "https://hm.baidu.com/hm.js?6f5bedee03e918312fa675f39d86090f";
+
+        var s = document.getElementsByTagName("script")[0];
+
+        s.parentNode.insertBefore(hm, s);
+
+    })();*/
+
+</script>
+<script>
+    //百度链接自动推送
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script>
+    //360自动推送代码
+    (function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?5d05b6940624eca482626ed92e107703":"https://jspassport.ssl.qhimg.com/11.0.1.js?5d05b6940624eca482626ed92e107703";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
+<script>
+	//百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0a15da51b3649d8cfa750fdb8f433364";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="app/resource/js/jquery.cookie.js"></script>
+<script>
+	var advertise_token="";
+	if(advertise_token!=''){
+		$.cookie("advertise_token", advertise_token, {
+		  path : '/',//cookie的作用域
+		  expires : 1
+		});
+	}
+</script>
+
+
+</body>
+</html>
+

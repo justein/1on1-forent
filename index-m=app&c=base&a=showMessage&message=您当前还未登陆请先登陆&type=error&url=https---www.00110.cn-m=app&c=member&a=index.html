@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>失败页面</title>
+<link href="app/resource/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/fonts/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/css/style.css" rel="stylesheet" type="text/css" />
+	<script src="app/resource/js/jquery.min.js"></script>
+	<script src="app/resource/js/jquery.SuperSlide.js"></script>
+<script src="app/resource/js/common.js"></script>
+<script src="app/resource/js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="app/resource/css/sweetalert2.min.css">
+
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
+</head>
+<body>
+	<div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<script>
+	    swal({
+	        title: "您当前还未登陆请先登陆",
+					html:
+				'<div class="inwrap in-bg">'+
+				'<div class="box-tips">'+
+					'<div class="tips-pic"><img src="https://www.00110.cn/app/resource/images/error-tips.png" alt=""></div>'+
+					'<div class="tips-cont">您当前还未登陆请先登陆</div>'+
+					'<div class="tips-button">'+
+						'<a href="javascript:history.back();" class="btn btn-back">返回上一页</a>'+
+						'<a href="index.html" class="btn btn-gray">返回主页</a>'+
+					'</div>'+
+					'</div>',
+					showConfirmButton:false
+	    }).then((value) => {
+	        window.location.href=escape2Html("https://www.00110.cn?m=app&c=member&a=index")
+	    });
+
+	    /**
+	     * 字符转义
+	     * @param str
+	     */
+	    function escape2Html(str) {
+	        var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+	        return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+	    }
+	</script>
+
+
+</div>
+</body>
+</html>

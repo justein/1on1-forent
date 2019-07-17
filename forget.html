@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>忘记密码_万能查</title>
+	<meta name="keywords" content=",万能查">
+	<meta name="description" itemprop="description" content="_万能查_关注有价值的商业信息">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="baidu_union_verify" content="e6967a277abd77a7c56ccede68ce0b97">
+<link rel='icon' href="app/resource/images/logox80.jpg" type='image/x-ico'/>
+<link href="app/resource/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/fonts/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="app/resource/layui/css/layui.css">
+<link href="app/resource/css/member.css" rel="stylesheet" type="text/css" />
+<script src="app/resource/js/jquery.min.js"></script>
+<script src="app/resource/js/jquery.SuperSlide.js"></script>
+<script src="app/resource/js/common.js"></script>
+<script src="app/resource/js/m.js"></script>
+<script src="app/resource/js/clipboard.min.js"></script>
+<script src="app/resource/js/modal.js"></script>
+<script src="app/resource/layer/layer.js"></script>
+	<script src="app/resource/js/bin/jsencrypt.min.js"></script>
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9606766828005336",
+            enable_page_level_ads: true
+        });
+	</script>
+</head>
+<body>
+<div class="header">
+		
+	<div class="topbar">
+		<div class="main clearfix">
+			<div class="wel-box"><a  href="index.html"   style="cursor:pointer;font-size:12px;color:#888888;">欢迎使用万能查</a></div>
+
+			<div class="wel-link"><a href="user-login.html" >登录</a><a href="user-register.html" >注册</a></div>
+		</div>
+	</div>
+
+
+	
+<!--main-->
+<div class="form-wrap clearfix">
+	<div class="main-col main-cpi-col">
+		<div class="form-lt">
+			<div class="lt-header">
+				<h3>万能查</h3>
+				<p>&nbsp; &nbsp;&nbsp;-关注有价值的商业信息</p>
+			</div>
+			<div class="lt-pic"><img src="app/resource/images/login-pic.jpg" alt=""></div>
+		</div>
+	</div>
+	<div class="main-col main-form-col">
+		<div class="form-inner">
+			<div class="form-hor">
+				<div class="form-header">
+					<h3>万能查</h3>
+					<p>综合权威资料信息查询平台</p>
+				</div>
+
+				<div class="form-group">
+					<input type="hidden" id="type">
+					<input type="hidden" id="uuid">
+					<input type="hidden" id="username">
+					<input type="text" class="form-input" placeholder="请输入手机号" id="mobile">
+					<span class="iconfont icon-iconzh1"></span>
+				</div>
+				<div class="form-group form-code-group">
+					<input type="text" class="form-input" placeholder="请输入图形验证码" id="captcha">
+					<span class="iconfont icon-yanzhengma"></span>
+					<a href="javascript:;" class="link-code"><img onclick="javascript:re_captcha();" src="https://www.00110.cn?m=app&amp;c=member&amp;a=captcha" alt="验证码" title="刷新图片" id="c2c98f0de5a04167a9e427d883690ff6" border="0"></a>
+				</div>
+				<div class="form-group form-code-group">
+					<input type="text" class="form-input" placeholder="请输入验证码" id="vercode">
+					<span class="iconfont icon-yanzhengma"></span>
+					<input type="button" value="获得验证码" class="btn-code" id="btn" onclick="settime(this)">
+				</div>
+				<div class="form-button">
+					<button class="btn btn-confirm">找回密码</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    var countdown=60;
+    function settime(val) {
+        if (countdown == 0) {
+            val.removeAttribute("disabled");
+            val.value="免费获取验证码";
+            countdown = 60;
+        } else {
+            val.setAttribute("disabled", true);
+            val.value="重新发送(" + countdown + ")";
+            countdown--;
+            setTimeout(function() {
+                settime(val)
+            },1000)
+        }
+
+    }
+		/**
+		 * 刷新验证码
+		 */
+		function re_captcha() {
+				var url = "https://www.00110.cn?m=app&c=member&a=captcha&captcha=random";
+				var random = Math.random();
+				url = url.replace("random", random);//使用js自带函数进行变量替换
+				document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=url;
+		}
+		//layui.use(['util', 'layer','jquery'], function(){
+				//var layer = layui.layer;
+				$("#btn").click(function(){
+						var mobile=$("#mobile").val()
+						var type=1
+						var phoneReg = /^1[23-456789]\d{9}$/;
+						if(phoneReg.test(mobile)){//是手机号，不是用户名
+								type=2//mobile
+						}else{//不是手机号，而是用户名
+								var username=mobile
+						}
+						$.ajax({
+								url:"https://www.00110.cn?m=app&c=member&a=findUser",//当前ajax请求的地址
+								type:'post',//请求的方式
+								async:true,//是否异步  默认为异步
+								data:{type:type,username:username,mobile:mobile},//当前ajax请求的参数  
+								dataType:"json",
+								success: function(data){//发送成功时的代码执行
+
+										if(data.code==1001){
+											mobile=data.data.mobile
+											username=data.data.username
+											uuid=data.data.uuid
+											$("#username").val(username)
+											$("#uuid").val(uuid)
+											$("#type").val(type)
+											$.ajax({
+												  url:"https://www.00110.cn?m=app&c=member&a=getvercode",//当前ajax请求的地址
+												  type:'post',//请求的方式
+												  async:true,//是否异步  默认为异步
+												  data:{mobile:mobile},//当前ajax请求的参数  
+												  dataType:"json",
+												  success: function(data){//发送成功时的代码执行
+
+												      if(data.code==1001){
+												      	layer.msg("验证码已发送至您的手机，请注意查收", {icon: 1});
+												      }else{
+												          layer.msg("获取验证码失败", {icon: 5});
+												      }
+												      //re_captcha();
+												  },
+												  error:function(){//失败时的代码执行
+												      layer.msg("获取验证码失败", {icon: 5});
+												      //re_captcha();
+												  }
+											})
+										}else{
+												layer.msg("获取用户信息失败", {icon: 5});
+										}
+										//re_captcha();
+								},
+								error:function(){//失败时的代码执行
+										layer.msg("获取用户信息失败", {icon: 5});
+										//re_captcha();
+								}
+						})
+
+
+				});
+				$(".btn-confirm").click(function(){
+						var captcha=$("#captcha").val()
+						var vercode=$("#vercode").val()
+						var uuid=$("#uuid").val()
+						var type=$("#type").val()
+						var username=$("#username").val()
+						var mobile=$("#mobile").val()
+
+						$.ajax({
+                url:"https://www.00110.cn?m=app&c=member&a=forget_submit",//当前ajax请求的地址
+                type:'post',//请求的方式
+                async:true,//是否异步  默认为异步
+                data:{vercode:vercode,captcha:captcha},//当前ajax请求的参数  
+                dataType:"json",
+                success: function(data){//发送成功时的代码执行
+                  console.log(data);
+										console.log(uuid,type,username,mobile)
+                    if(data.code==1001){
+												window.location.href="find-back-"+uuid+"-"+type+"-"+username+"-"+mobile+".html";
+
+                    }else{
+                        layer.msg("找回密码失败，请重新尝试");
+
+                    }
+                    re_captcha();
+                },
+                error:function(){//失败时的代码执行
+                    layer.msg("找回密码失败，请重新尝试");
+                    re_captcha();
+                }
+
+            })
+				})
+		//})
+</script>
+
+<!--fcooter-->
+<div class="footer">
+    <div class="main">
+        <div class="foot-nav">
+            <a href="help-detail-4-10.html">关于万能查</a>
+            <a href="help-detail-4-19.html">商务合作</a>
+            <a href="help-detail-3-8.html">帮助教程</a>
+            <a href="show404.html">建议反馈</a>
+            <!--<a href="">投诉通道</a>-->
+        </div>
+        <div class="copyrigt">
+            版权所有:Copyright 2018-2020   万能查 渝ICP备18005295号-3号 渝B2-0  渝公网安备号 人杰网络科技有限公司
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

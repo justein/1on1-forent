@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>用户注册_一比一</title>
+	<meta name="keywords" content=",一比一">
+	<meta name="description" itemprop="description" content="_一比一_为真实而生的信息服务平台">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="baidu_union_verify" content="e6967a277abd77a7c56ccede68ce0b97">
+<link rel='icon' href="app/resource/images/logox80.jpg" type='image/x-ico'/>
+<link href="app/resource/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/fonts/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="app/resource/layui/css/layui.css">
+<link href="app/resource/css/member.css" rel="stylesheet" type="text/css" />
+<script src="app/resource/js/jquery.min.js"></script>
+<script src="app/resource/js/jquery.SuperSlide.js"></script>
+<script src="app/resource/js/common.js"></script>
+<script src="app/resource/js/m.js"></script>
+<script src="app/resource/js/clipboard.min.js"></script>
+<script src="app/resource/js/modal.js"></script>
+<script src="app/resource/layer/layer.js"></script>
+	<script src="app/resource/js/bin/jsencrypt.min.js"></script>
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9606766828005336",
+            enable_page_level_ads: true
+        });
+	</script>
+</head>
+<body>
+<div class="header">
+		
+	<div class="topbar">
+		<div class="main clearfix">
+			<div class="wel-box"><a  href="index.html"   style="cursor:pointer;font-size:12px;color:#888888;">欢迎使用一比一</a></div>
+
+			<div class="wel-link"><a href="user-login.html" >登录</a><a href="user-register.html" class="login-link">注册</a></div>
+		</div>
+	</div>
+
+
+	
+<!--main-->
+<div class="form-wrap clearfix">
+	<div class="main-col main-cpi-col">
+		<div class="form-lt">
+			<div class="lt-header">
+				<h3>一比一</h3>
+				<p>&nbsp; &nbsp;&nbsp;-为真实而生的信息服务平台</p>
+			</div>
+			<div class="lt-pic"><img src="app/resource/images/login-pic.jpg" alt=""></div>
+		</div>
+	</div>
+	<div class="main-col main-form-col">
+		<div class="form-inner">
+			<div class="form-hor">
+				<div class="form-header">
+					<h3>一比一</h3>
+					<p>向真而生</p>
+				</div>
+
+
+				<div class="form-group">
+					<input type="hidden" name="type" value="1" id="type">
+					<input type="text" class="form-input" placeholder="昵称" id="username">
+					<span class="iconfont icon-iconzh1"></span>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-input" placeholder="请输入常用的手机号" id="mobile">
+					<span class="iconfont icon-iconfontlock"></span>
+				</div>
+				<div class="form-group form-code-group">
+					<input type="text" class="form-input" placeholder="请输入验证码" id="vercode">
+					<span class="iconfont icon-yanzhengma"></span>
+					<input type="button" value="获得验证码" class="btn-code" id="btn" onclick="settime(this)">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-input" placeholder="请输入您的密码" id="password">
+					<span class="iconfont icon-iconfontlock"></span>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-input" placeholder="确认密码" id="repass">
+					<span class="iconfont icon-iconfontlock"></span>
+				</div>
+				<div class="form-label jus">
+					<label class="l-checkbox">
+						<input type="checkbox"> <a href="help-detail-1-2.html" target="_blank">已阅读并同意用户注册协议</a>
+					</label>
+					<div class="jus-text">已有账号？<a href="user-login.html" class="rg-link">登录</a></div>
+				</div>
+				<div class="form-button">
+					<button class="btn btn-confirm">注册</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    var countdown=60;
+    function settime(val) {
+        if (countdown == 0) {
+            val.removeAttribute("disabled");
+            val.value="免费获取验证码";
+            countdown = 60;
+        } else {
+            val.setAttribute("disabled", true);
+            val.value="重新发送(" + countdown + ")";
+            countdown--;
+            setTimeout(function() {
+                settime(val)
+            },1000)
+        }
+
+    }
+	//layui.use(['util', 'layer','jquery'], function(){
+			$("#btn").click(function(){
+					var mobile=$("#mobile").val()
+					$.ajax({
+						  url:"https://www.00110.cn?m=app&c=member&a=getvercode",//当前ajax请求的地址
+						  type:'post',//请求的方式
+						  async:true,//是否异步  默认为异步
+						  data:{mobile:mobile},//当前ajax请求的参数  
+						  dataType:"json",
+						  success: function(data){//发送成功时的代码执行
+
+							  if(data.code==1001){
+								layer.msg("验证码已发送至您的手机，请注意查收", {icon: 1});
+								// var date = new Date();
+								// var year  = date.getFullYear();
+								// var month  = date.getMonth();
+								// var day   = date.getDate();
+								// var hour  = date.getHours();
+								// var minute = date.getMinutes();
+								// var second = date.getSeconds();
+								// setCountdown(year,month,day,hour,minute+1,second);
+							  }else{
+								  layer.msg("获取验证码失败", {icon: 5});
+							  }
+							  //re_captcha();
+						  },
+						  error:function(){//失败时的代码执行
+							  layer.msg("获取验证码失败", {icon: 5});
+							  //re_captcha();
+						  }
+					})
+			});
+			$(".btn-confirm").click(function(){
+					var type=$("#type").val()
+					var username=$("#username").val()
+					var mobile=$("#mobile").val()
+					var vercode=$("#vercode").val()
+					var password=$("#password").val()
+					var repass=$("#repass").val()
+					var selected=$("input[type='checkbox']").prop('checked')
+//					if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(username)){
+//							layer.msg("用户名不能有特殊字符", {icon: 5});
+//							return false;
+//					}
+					if(/(^\_)|(\__)|(\_+$)/.test(username)){
+								layer.msg("用户名首尾不能出现下划线\'_\'", {icon: 5});
+								return false;
+					}
+					if(/^\d+\d+\d$/.test(username)){
+								layer.msg("用户名不能全为数字", {icon: 5});
+								return false;
+					}
+					var phoneReg = /^1[23-456789]\d{9}$/;
+					if(!phoneReg.test(mobile)){
+						layer.msg("手机号码不合法", {icon: 5});
+						return false;
+					}
+					if(password.length<6){
+						layer.msg("密码长度必须大于六位！", {icon: 5});
+						return false;
+					}
+					if(repass!=password){
+						layer.msg("两次密码不一致！", {icon: 5});
+						return false;
+					}
+					if(selected==false){
+						layer.msg("您未同意用户协议", {icon: 5});
+						return false;
+					}
+
+					$.ajax({
+						  url:"https://www.00110.cn?m=app&c=member&a=siginin",//当前ajax请求的地址
+						  type:'post',//请求的方式
+						  async:true,//是否异步  默认为异步
+						  data:{username:username,mobile:mobile,vercode:vercode,password:password,type:type},//当前ajax请求的参数  
+						  dataType:"json",
+						  success: function(data){//发送成功时的代码执行
+								console.log(data)
+							  if(data.code==2001){
+
+								  layer.msg("注册失败:"+JSON.stringify(data.data),{icon:5});
+
+								  //re_captcha();
+								  return false;
+							  }
+							  if(data.code==1001){
+								  layer.msg(data.data+"正在跳转........",{icon:1});
+								  setTimeout(function(){
+									  //window.location.href="https://www.00110.cn?m=app&c=index&a=index";
+										window.location.href="index.html";
+								  }, 3000);
+
+							  }else{
+								  layer.msg("注册失败，请重新尝试注册");
+
+							  }
+							  //re_captcha();
+						  },
+						  error:function(){//失败时的代码执行
+							  layer.msg("注册失败，请重新尝试注册",{icon:5});
+							  //re_captcha();
+						  }
+					})
+			})
+	//})
+		   
+
+
+</script>
+
+<!--fcooter-->
+<div class="footer">
+    <div class="main">
+        <div class="foot-nav">
+            <a href="help-detail-4-10.html">关于一比一</a>
+            <a href="help-detail-4-19.html">商务合作</a>
+            <a href="help-detail-3-8.html">帮助教程</a>
+            <a href="show404.html">建议反馈</a>
+            <!--<a href="">投诉通道</a>-->
+        </div>
+        <div class="copyrigt">
+            版权所有:Copyright 2018-2020   一比一 渝ICP备18005295号-3号 渝B2-0  渝公网安备号 人杰网络科技有限公司
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

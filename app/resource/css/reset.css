@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* 重写浏览器的所有默认样式 yui.css
+---------------------------------------------------------------------------------------------------------------------- */
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;font-size:14px;font-family:'微软雅黑';}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+s{ text-decoration:none;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+legend{color:#000;}
+/* 基本属性
+---------------------------------------------------------------------------------------------------------------------- */
+a{text-decoration: none;font-family:'微软雅黑';cursor:pointer; }
+a:link,a:visited{color:#333;font-size:14px;}
+a:hover,a:active,a:focus{color:#eb0c1c;text-decoration: none;}
+input, button, select, textarea{font-size:14px;color:#333;}
+/* 清除浮动
+---------------------------------------------------------- */
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.clearfix{zoom:1;}
+/*下面的清除浮动，相同与  clear_box，只用与，具体项目中，*/
+.pull-left{ float:left;}
+.pull-right{ float:right;}
+.w1200{margin: 0 auto; width: 1200px;}
+img{max-width: 100%;vertical-align: middle;}
+.main{width: 1200px; margin: 0 auto;}
+.modal-open {
+  overflow: hidden;
+}
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal.fade .modal-dialog {
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  -o-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  outline: 0;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.modal-backdrop.in {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.modal-header {
+  position: relative;
+  padding:25px 15px;
+  text-align: center;
+  font-size: 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-header:after{
+  height: 5px;
+  width: 50px;
+  background: #009688;
+  content: '　';
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -25px;
+  bottom: 0;
+}
+.modal .close {
+  margin-top: -2px;
+  width: 40px;
+  height: 70px;
+  position: absolute;
+  top: -70px;
+  cursor:pointer;
+  right: 10px;
+  background: url("../images/modal-close.png");
+}
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+.modal-footer {
+  padding:30px 15px 50px 15px;
+  text-align: center;
+  overflow: hidden;
+}
+.modal-footer .btn{
+  display: inline-block;
+  width: 140px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 16px;
+  border-radius: 44px;
+  text-align: center;
+  color: #fff;
+  margin: 0 40px;
+  cursor: pointer;
+}
+.modal-footer .btn-default{
+  background: -webkit-linear-gradient(left, #07bab5 , #28dfc4); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #07bab5 , #28dfc4); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #07bab5 , #28dfc4); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #07bab5 , #28dfc4); /* 标准的语法 */
+}
+.modal-footer .btn-gray{
+  background: #e3e3e3;
+  color: #999;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 10% auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 800px;
+  }
+}
+.modal-tips{
+  padding: 50px 0 30px 0;
+  text-align: center;
+  font-size: 30px;
+}

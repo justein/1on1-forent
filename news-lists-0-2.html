@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>新闻资讯_万能查</title>
+	<meta name="keywords" content="资料下载,报告下载,行业报告,数据报告,医院查询,公司查询,工商查询,IP地址查询,网站备案查询,驾照查分,车辆违章查询,手机归属地查询,违法查询,负面信息查询,企查查,天眼查,站长之家,万能查">
+	<meta name="description" itemprop="description" content="万能查_专注服务于个人与企业的综合信息查询与资料下载平台,是专业权威的信息查询与资料下载平台,为您提供数据下载,资料下载,行业报告下载,医院查询,公司查询,工商查询,IP地址查询,网站备案查询,驾照查分,车辆违章查询,手机归属地查询,违法查询,负面信息查询等相关信息,秉承专业、权威、安全的态度为您的生活提供信息查询服务,查询更多信息就到万能查官网！_万能查_关注有价值的商业信息">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="baidu_union_verify" content="e6967a277abd77a7c56ccede68ce0b97">
+<link rel='icon' href="app/resource/images/logox80.jpg" type='image/x-ico'/>
+<link href="app/resource/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/fonts/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="app/resource/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="app/resource/layui/css/layui.css">
+<link href="app/resource/css/member.css" rel="stylesheet" type="text/css" />
+<script src="app/resource/js/jquery.min.js"></script>
+<script src="app/resource/js/jquery.SuperSlide.js"></script>
+<script src="app/resource/js/common.js"></script>
+<script src="app/resource/js/m.js"></script>
+<script src="app/resource/js/clipboard.min.js"></script>
+<script src="app/resource/js/modal.js"></script>
+<script src="app/resource/layer/layer.js"></script>
+	<script src="app/resource/js/bin/jsencrypt.min.js"></script>
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9606766828005336",
+            enable_page_level_ads: true
+        });
+	</script>
+</head>
+<body>
+<div class="header">
+		
+	<div class="topbar">
+		<div class="main clearfix">
+			<div class="wel-box"><a  href="index.html"   style="cursor:pointer;font-size:12px;color:#888888;">欢迎使用万能查</a></div>
+
+			<div class="wel-link"><a href="user-login.html" >登录</a><a href="user-register.html" >注册</a></div>
+		</div>
+	</div>
+
+
+	
+<style>#divselect select{
+    width:100%;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 15px;
+    display: block;
+    color: #999999;
+    cursor: pointer;
+    font-style: normal;
+    background:#fff;
+  }
+  #divselect select option{
+    line-height: 34px;
+    font-size:14px;
+  }
+
+  .advertisment{
+    /*border: 1px solid #263740;*/
+    border-radius:3px;
+    background:#fff;
+    float: right;
+    height: 78px;
+    width: 270px;
+    cursor: pointer;
+  }
+  .advertisment span{
+
+    height: 50%;
+    width: 100%;
+    float: left;
+    text-align:center;
+    font-size:21px;
+  }
+
+  .advertisment span > .button{
+    background: #263740;
+    width: 95px;
+    height: 35px;
+    line-height: 35px;
+    color: #FFFFFF;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+
+</style>
+
+<div class="header-main clearfix">
+  <a class="logo" href="index.html" style="padding:0"><img src="app/resource/images/logo.png" alt="logo" style="width:220px;height:84.5px;margin-top:-8px;" /></a>
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <div id="divselect">
+        <cite >
+                    信息查询
+                  </cite>
+        <ul>
+          <li><a href="javascript:;" selectid="message">信息查询</a></li>
+          <li><a href="javascript:;" selectid="datum">资料查询</a></li>
+        </ul>
+        <input name="" type="hidden" value="message" id="inputselect"/>
+      </div>
+      <input type="text" class="search-input" name="keyword"  value="" placeholder="输入您要查询的名称，如：企业信息">
+      <button class="btn search-button" onclick="search_button();"><span class="iconfont icon-sousuo"></span></button>
+    </div>
+    <ul class="search-key">
+      <li>热门搜索：</li>
+            <li><a href="dt-time-2-X-X.html">产业经济</a></li>
+            <li><a href="dt-time-1-X-X.html">市场调研</a></li>
+            <li><a href="datum-search-category-6-X-X.html">行业报告</a></li>
+            <li><a href="datum-search-category-11-X-X.html">IT计算机</a></li>
+      
+    </ul>
+  </div>
+    <div class="advertisment" onclick="location_href('/becomeFacilitator.html')">
+    <span>加盟服务商</span>
+    <span><button class="btn button">赚现金</button></span>
+  </div>
+
+  
+</div>
+
+<div class="navbar">
+  <div class="main">
+
+    <div class="nav-menu nav-dropdown">
+      <div class="nav-text"><span class="iconfont icon-caidan"></span> 产品分类</div>
+      <!--下拉-->
+      <div class="nav-menu-dropdown">
+        <div class="menu-inner">
+          <dl class="menu-item" data-target="infoBox">
+            <dt>
+              <span class="iconfont icon-xinxichaxun"></span> <span>信息查询</span>
+            </dt>
+            <dd>
+              <ul class="menu-in-list menu-col-3">
+                                                <li><a href="information-search-category-1.html">交通地理</a></li>
+                                                                <li><a href="information-search-category-2.html">气象水利</a></li>
+                                                                <li><a href="information-search-category-3.html">生活服务</a></li>
+                                                                <li><a href="information-search-category-4.html">金融理财</a></li>
+                                                                <li><a href="information-search-category-5.html">电子商务</a></li>
+                                                                <li><a href="information-search-category-6.html">工商政务</a></li>
+                                                                <li><a href="information-search-category-7.html">信贷征信</a></li>
+                                                                <li><a href="information-search-category-8.html">企业综合</a></li>
+                                                                <li><a href="information-search-category-9.html">市场调查</a></li>
+                                                                <li><a href="information-search-category-10.html">风控反欺诈</a></li>
+                                                                <li><a href="information-search-category-11.html">教育培训</a></li>
+                                                                <li><a href="information-search-category-12.html">法律咨询</a></li>
+                                                                <li><a href="information-search-category-13.html">医疗</a></li>
+                                                                <li><a href="information-search-category-14.html">其它</a></li>
+                                              </ul>
+            </dd>
+          </dl>
+          <dl class="menu-item" data-target="fileBox">
+            <dt>
+              <span class="iconfont icon-ziliao2"></span> <span>资料查询</span>
+            </dt>
+            <dd>
+              <ul class="menu-in-list menu-col-4">
+                                                <li style="width:33.3%"><a href="datum-search-category-1.html">市场调研</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-2.html">产业经济</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-3.html">专业方案</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-4.html">求职汇报</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-5.html">考试题库</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-6.html">行业报告</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-7.html">工程科技</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-8.html">医药卫生</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-9.html">自然科学</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-10.html">人文社科</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-11.html">IT计算机</a></li>
+                                                                <li style="width:33.3%"><a href="datum-search-category-12.html">其它</a></li>
+                                
+              </ul>
+            </dd>
+          </dl>
+        </div>
+        <!-- 更多 -->
+        <div class="menu-slide">
+          <div class="menu-slide-box" id="infoBox">
+          <ul class="menu-slide-item">
+                        <li><a href="information-search-category-1.html">交通地理</a></li>
+                        <li><a href="information-search-category-2.html">气象水利</a></li>
+                        <li><a href="information-search-category-3.html">生活服务</a></li>
+                        <li><a href="information-search-category-4.html">金融理财</a></li>
+                        <li><a href="information-search-category-5.html">电子商务</a></li>
+                        <li><a href="information-search-category-6.html">工商政务</a></li>
+                        <li><a href="information-search-category-7.html">信贷征信</a></li>
+                        <li><a href="information-search-category-8.html">企业综合</a></li>
+                        <li><a href="information-search-category-9.html">市场调查</a></li>
+                        <li><a href="information-search-category-10.html">风控反欺诈</a></li>
+                        <li><a href="information-search-category-11.html">教育培训</a></li>
+                        <li><a href="information-search-category-12.html">法律咨询</a></li>
+                        <li><a href="information-search-category-13.html">医疗</a></li>
+                        <li><a href="information-search-category-14.html">其它</a></li>
+                      </ul>
+        </div>
+        <div class="menu-slide-box" id="fileBox">
+
+          <ul class="menu-slide-item">
+                        <li><a href="datum-search-category-1.html">市场调研</a></li>
+                        <li><a href="datum-search-category-2.html">产业经济</a></li>
+                        <li><a href="datum-search-category-3.html">专业方案</a></li>
+                        <li><a href="datum-search-category-4.html">求职汇报</a></li>
+                        <li><a href="datum-search-category-5.html">考试题库</a></li>
+                        <li><a href="datum-search-category-6.html">行业报告</a></li>
+                        <li><a href="datum-search-category-7.html">工程科技</a></li>
+                        <li><a href="datum-search-category-8.html">医药卫生</a></li>
+                        <li><a href="datum-search-category-9.html">自然科学</a></li>
+                        <li><a href="datum-search-category-10.html">人文社科</a></li>
+                        <li><a href="datum-search-category-11.html">IT计算机</a></li>
+                        <li><a href="datum-search-category-12.html">其它</a></li>
+                      </ul>
+        </div>
+
+        </div>
+      </div>
+    </div>
+    <ul class="nav">
+      <li><a  target="_blank" href="information-search.html">信息查询</a></li>
+      <li><a target="_blank" href="datum-search.html">资料查询</a></li>
+      <li><a target="_blank" href="news-lists.html">新闻资讯</a></li>
+      <li><a target="_blank" href="http://www.wannengcha.cn/index.php?m=app&amp;c=index&amp;a=index&amp;token=">交流社区</a></li>
+      <li><a target="_blank" href="help-detail-4-10.html">帮助教程</a></li>
+
+      <!--<li><a target="_blank" href="becomeMember.html">成为会员</a></li>-->
+      <!--<li><a target="_blank" href="becomeFacilitator.html">加盟服务商</a></li>-->
+    </ul>
+  </div>
+</div>
+</div>
+
+
+<!--QQ客服-->
+<style>.main-im{position:fixed;right:10px;top:300px;z-index:100;width:110px;height:272px}.main-im .qq-a{display:block;width:106px;height:116px;font-size:14px;color:#0484cd;text-align:center;position:relative}.main-im .qq-a span{bottom:5px;position:absolute;width:90px;left:10px}.main-im .qq-hover-c{width:70px;height:70px;border-radius:35px;position:absolute;left:18px;top:10px;overflow:hidden;z-index:9}.main-im .qq-container{z-index:99;position:absolute;width:109px;height:118px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom:1px solid #ddd;background:url("app/resource/images/qq-icon-bg.png") no-repeat center 8px}.main-im .img-qq{max-width:60px;display:block;position:absolute;left:6px;top:3px;-moz-transition:all .5s;-webkit-transition:all .5s;-o-transition:all .5s;transition:all .5s}.main-im .im-qq:hover .img-qq{max-width:70px;left:1px;top:8px;position:absolute}.main-im .im_main{background:#f9fafb;border:1px solid #ddd;border-radius:10px;background:#f9fafb;display:none}.main-im .im_main .im-tel{color:#000;text-align:center;width:109px;height:105px;border-bottom:1px solid #ddd}.main-im .im_main .im-tel div{font-weight:700;font-size:12px;margin-top:6px}.main-im .im_main .im-tel .tel-num{font-family:Arial;font-weight:700;color:#666666}.main-im .im_main .im-tel:hover{background:#fafafa}.main-im .im_main .weixing-container{width:55px;height:47px;border-right:1px solid #ddd;background:#f5f5f5;border-bottom-left-radius:10px;background:url("app/resource/images/weixing-icon.png") no-repeat center center;float:left}.main-im .im_main .weixing-show{width:112px;height:172px;background:#fff;border-radius:10px;border:1px solid #ddd;position:absolute;left:-125px;top:-126px}.main-im .im_main .weixing-show .weixing-sanjiao{width:0;height:0;border-style:solid;border-color:transparent transparent transparent #fff;border-width:6px;left:112px;top:134px;position:absolute;z-index:2}.main-im .im_main .weixing-show .weixing-sanjiao-big{width:0;height:0;border-style:solid;border-color:transparent transparent transparent #ddd;border-width:8px;left:112px;top:132px;position:absolute}.main-im .im_main .weixing-show .weixing-ma{width:104px;height:103px;padding-left:5px;padding-top:5px}.main-im .im_main .weixing-show .weixing-txt{position:absolute;top:110px;left:7px;width:100px;margin:0 auto;text-align:center}.main-im .im_main .go-top{width:50px;height:47px;background:#f5f5f5;border-bottom-right-radius:10px;background:url("app/resource/images/totop-icon.png") no-repeat center center;float:right}.main-im .im_main .go-top a{display:block;width:52px;height:47px}.main-im .close-im{position:absolute;right:10px;top:-12px;z-index:100;width:24px;height:24px}.main-im .close-im a{display:block;width:24px;height:24px;background:url("app/resource/images/close_im.png") no-repeat left top}.main-im .close-im a:hover{text-decoration:none}.main-im .open-im{cursor:pointer;margin-left:68px;width:40px;height:133px;background:url("app/resource/images/open_im.png.jpeg") no-repeat left top}
+</style>
+
+<div class="main-im">
+  <div id="open_im" class="open-im">
+    &nbsp;
+  </div>
+  <div class="im_main" id="im_main">
+    <div id="close_im" class="close-im">
+      <a href="javascript:void(0);" title="点击关闭">&nbsp;</a>
+    </div>
+    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3214917077&amp;site=qq&amp;menu=yes" target="_blank" class="im-qq qq-a" title="在线QQ客服">
+      <div class="qq-container">
+      </div>
+      <div class="qq-hover-c">
+        <img class="img-qq" src="app/resource/images/qqkefu.png">
+      </div>
+      <span> QQ在线咨询</span> </a>
+    <div class="im-tel">
+      <div>
+        产品咨询
+      </div>
+      <div class="tel-num">
+        QQ:3214917077
+      </div>
+      <div>
+        技术指导
+      </div>
+      <div class="tel-num">
+        <a href="http://www.wannengcha.cn/index.php?m=app&amp;c=index&amp;a=index&amp;token=" target="_blank" title="前往社区发帖">前往社区发帖</a>
+      </div>
+    </div>
+    <div class="im-footer" style="position:relative">
+      <div class="weixing-container">
+        <div class="weixing-show">
+          <div class="weixing-txt">
+            微信扫一扫<br>
+            服务商用户群
+          </div>
+          <img class="weixing-ma" src="app/resource/images/weixing-ma.png">
+          <div class="weixing-sanjiao">
+          </div>
+          <div class="weixing-sanjiao-big">
+          </div>
+        </div>
+      </div>
+      <div class="go-top">
+        <a href="javascript:;" title="返回顶部"></a>
+      </div>
+      <div style="clear:both">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    //搜索
+    $(".search-input").bind('keyup',function(event){
+        event=document.all?window.event:event;
+        if((event.keyCode || event.which)==13){
+            search_button();
+        }
+    });
+
+
+    function search_button(){
+        var keyword = $("input[name='keyword']").val();
+        var type = $("#inputselect").val();
+        if (type == 'message') {
+            if(keyword !=""){
+                window.location.href = "" + 'information-search-index-' + encodeURI(keyword) + '.html'
+            }else{
+                window.location.href = "" + 'information-search.html';
+            }
+
+        } else if (type == 'datum') {
+            if(keyword !=""){
+                window.location.href = "" + 'datum-search-index-' + encodeURI(keyword) + '.html'
+            }else{
+                window.location.href = "" + 'datum-search.html';
+            }
+        }
+    }
+
+    //跳转
+    function location_href(url){
+        window.location.href =url;
+    }
+
+
+  //客服
+    $(function(){
+        $('#close_im').bind('click',function(){
+            $('#main-im').css("height","0");
+            $('#im_main').hide();
+            $('#open_im').show();
+        });
+        $('#open_im').bind('click',function(e){
+            $('#main-im').css("height","272");
+            $('#im_main').show();
+            $(this).hide();
+        });
+        $('.go-top').bind('click',function(){
+            $(window).scrollTop(0);
+        });
+        $(".weixing-container").bind('mouseenter',function(){
+            $('.weixing-show').show();
+        })
+        $(".weixing-container").bind('mouseleave',function(){
+            $('.weixing-show').hide();
+        });
+    });
+</script>
+
+
+
+
+
+<style type="text/css">.nav-menu.show .nav-menu-dropdown{
+        display: none;
+    }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="app/resource/news/layui/css/layui.css">
+<link rel="stylesheet" href="app/resource/news/static/css/index.css">
+<div class="layui-container news-list news-index">
+    <div class="layui-row layui-col-space20 contentBot">
+        <div class="layui-col-md8 index-list">
+            <div class="layui-tab layui-tab-brief">
+                <ul class="layui-tab-title">
+                    <a href="news-lists.html"><li  class=" layui-this" >综合</li></a>
+                                        <a href="news-lists-2.html"><li  class=" " id="2">新闻</li></a>
+                                        <a href="news-lists-3.html"><li  class=" " id="3">活动</li></a>
+                                        <a href="news-lists-4.html"><li  class=" " id="4">媒体</li></a>
+                                        <a href="news-lists-5.html"><li  class=" " id="5">公告</li></a>
+                                        <!--<li>互联网</li>-->
+                    <!--<li>软件</li>-->
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <ul class="newsList">
+                                                        <li>
+                                <a class="img" href="news-detail-31.html" target="_blank"><img src="attachment/images/2019/03/NnLqTcW4WQLJNymqMsB4RQHlwLjCOH.jpg" style="height:146px;" alt="阳春三月，春暖花开，又是一年新生的伊始图片"></a><div class="txt">
+                                <a href="news-detail-31.html" target="_blank">阳春三月，春暖花开，又是一年新生的伊始</a>
+                                <div class="label"><span class="cyan">新闻</span> <b>2019-03-04 12:53:21</b> <i class="layui-icon layui-icon-senior"></i>139 </div>
+                                <p class="cont">温和的阳光，泻了满城的春色，杨柳依依，桃花灼灼。陌上，油菜花绽开了娇小的容颜，和着春风的节拍，翩翩起舞，仿若诉说春的晴朗......</p>
+                            </div>
+                            </li>
+                                                        <li>
+                                <a class="img" href="news-detail-30.html" target="_blank"><img src="attachment/images/2019/03/T3J1Ru8DkdKc89JGdd85jP3uGgrvZD.jpg" style="height:146px;" alt="十三届全国人大二次会议正在直播中图片"></a><div class="txt">
+                                <a href="news-detail-30.html" target="_blank">十三届全国人大二次会议正在直播中</a>
+                                <div class="label"><span class="cyan">新闻</span> <b>2019-03-04 12:11:39</b> <i class="layui-icon layui-icon-senior"></i>34 </div>
+                                <p class="cont">十三届全国人大二次会议于3月4日上午11时15分在人民大会堂新闻发布厅举行新闻发布会，由大会发言人就大会议程和人大工作相关的问题回答中外记者提问...</p>
+                            </div>
+                            </li>
+                                                        <li>
+                                <a class="img" href="news-detail-29.html" target="_blank"><img src="attachment/images/2019/01/rx39ZhYh4J9a1zfjXG89393QL9f482.jpg" style="height:146px;" alt="万能查再创新功能-全国招投标信息查询图片"></a><div class="txt">
+                                <a href="news-detail-29.html" target="_blank">万能查再创新功能-全国招投标信息查询</a>
+                                <div class="label"><span class="cyan">新闻</span> <b>2019-01-17 17:52:38</b> <i class="layui-icon layui-icon-senior"></i>66 </div>
+                                <p class="cont">应大众需求！万能查官方在最近上线了一款可以查询全国范围内招投标信息的工具。接下来就跟随小编的操作体验一番吧！...</p>
+                            </div>
+                            </li>
+                                                        <li>
+                                <a class="img" href="news-detail-28.html" target="_blank"><img src="attachment/images/2019/01/X8G3JWHHg20w918M233YnnzG3jZ6RC.jpg" style="height:146px;" alt="请注意抢票时间_2019年春运即将来临图片"></a><div class="txt">
+                                <a href="news-detail-28.html" target="_blank">请注意抢票时间_2019年春运即将来临</a>
+                                <div class="label"><span class="cyan">媒体</span> <b>2019-01-17 17:17:32</b> <i class="layui-icon layui-icon-senior"></i>31 </div>
+                                <p class="cont">春运是一个非常复杂的词汇，主要是英文37亿人次于中国范围之内移动，除了这么多的人口流动，在货物运输方面也存在非常大的压力，要符合超过14亿人口的年货需求，压力可想而知。眼见着2019年的春节亦将要来临，那麽2019年春运什么时候开始呢？下面万能查跟大家说明下2019年春运起止时间大家先行做个准备吧！...</p>
+                            </div>
+                            </li>
+                                                        <li>
+                                <a class="img" href="news-detail-27.html" target="_blank"><img src="attachment/images/2019/01/et4zGGaUaAiPuWb4lU84WRRbzUspAb.jpg" style="height:146px;" alt="万能查告诉你千万别在春节相亲图片"></a><div class="txt">
+                                <a href="news-detail-27.html" target="_blank">万能查告诉你千万别在春节相亲</a>
+                                <div class="label"><span class="cyan">媒体</span> <b>2019-01-16 17:49:31</b> <i class="layui-icon layui-icon-senior"></i>7 </div>
+                                <p class="cont">很多人在春节相亲的时候会有凑合，糊弄，以及安慰心理等，有的人甚至会选择逃避，或者直接租一个对象回家过年的极端做法。在此我们一定要切记，将父母的需求凌驾于自己需求之上是一种不正确的做法。...</p>
+                            </div>
+                            </li>
+                                                        <li>
+                                <a class="img" href="news-detail-26.html" target="_blank"><img src="attachment/images/2019/01/OqErnjr3PZ8L188uqzZgQlZ3SN31Nq.png" style="height:146px;" alt="快播创始人王欣再创黑科技，携新产品马桶MT归来-万能查资讯图片"></a><div class="txt">
+                                <a href="news-detail-26.html" target="_blank">快播创始人王欣再创黑科技，携新产品马桶MT归来-万能查资讯</a>
+                                <div class="label"><span class="cyan">新闻</span> <b>2019-01-16 17:22:33</b> <i class="layui-icon layui-icon-senior"></i>52 </div>
+                                <p class="cont">相信大家都曾经熟悉快播这个软件！在中国互联网历史上算是一个特别具有传奇色彩的一款产品，它的创始人王欣声称技术无罪的口号也成为当时大部分人的口头禅！如今王欣摇身一变，成为一家人工智能公司的创始人兼CEO。...</p>
+                            </div>
+                            </li>
+                                                        <!--广告位-->
+                            <!--<li class="newsList2">-->
+                                <!--<div class="title"><a href="detail.html">王者荣耀走下坡路，七个原因告诉你为什么，句句在理</a></div>-->
+                                <!--<a href="javascript:;"><img src="https://www.00110.cn/app/resource/images/news/home_img7.jpg"></a><a href="javascript:;"><img src="https://www.00110.cn/app/resource/images/news/home_img8.jpg"></a><a href="javascript:;" class="last"><img src="https://www.00110.cn/app/resource/images/news/home_img9.jpg"></a>-->
+                                <!--<div class="label"><span class="cyan">科技</span>游戏网 <b>2018-06-07</b> <i class="layui-icon layui-icon-news-review1"></i>200</div>-->
+                            <!--</li>-->
+                        </ul>
+                        <div class="list-page">
+                            <a href="news-lists-0-1.html"><span class="iconfont icon-arrRight-fill"></span> 上一页</a> <a href="news-lists-0-1.html">1</a> <a href="news-lists-0-2.html" class="cur">2</a> <a href="news-lists-0-3.html">3</a> <a href="news-lists-0-4.html">4</a> <a href="news-lists-0-3.html"><span class="iconfont icon-shouqi"></span> 下一页</a> <span>共6页　到第</span> <input type="text" class="page-input" value="2" id="goal"> <span>页</span> <a class="btn-jump">确定</a>
+                        </div>
+                        <!--<div class="btn"><a href="javascript:;" class="layui-btn layui-btn-primary">点击加载更多</a></div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4 index-side">
+            <div class="newsSide">
+                <h2>最新资料</h2>
+                <ul>
+                                        <li><a href="datum-detail-1277.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2019航天云网企业报告</p></a></li>
+                                        <li><a href="datum-detail-1276.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2019Q1中国互联网流量季度分析报告</p></a></li>
+                                        <li><a href="datum-detail-1275.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >第三方移动支付2018年交易 规模达190.5万亿</p></a></li>
+                                        <li><a href="datum-detail-1274.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018中国第三方支付行业研究报告</p></a></li>
+                                        <li><a href="datum-detail-1273.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018年H1中国第三方支付数据发布</p></a></li>
+                                        <li><a href="datum-detail-1272.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2019年3月app store推广行情</p></a></li>
+                                        <li><a href="datum-detail-1270.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018棉纺行业深度研究报告</p></a></li>
+                                        <li><a href="datum-detail-1269.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018年互联网法律白皮书</p></a></li>
+                                        <li><a href="datum-detail-1268.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018动漫在年轻人中的影响力研究报告</p></a></li>
+                                        <li><a href="datum-detail-1267.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018-2019手机浏览器市场年度监测报告</p></a></li>
+                                        <li><a href="datum-detail-1266.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2018抖音大数据报告</p></a></li>
+                                        <li><a href="datum-detail-1265.html" target="_blank"><span>
+                        <img src="app/resource/images/pdf.png" alt="PDF文档" style="width:50px;"></span><p class="txt" >2015-2018年医疗政策梳理</p></a></li>
+                                    </ul>
+            </div>
+        </div>
+        <!--<div id="silde"><a id="refresh"><i class="layui-icon layui-icon-refresh"></i></a><a id="scroll"><i class="layui-icon layui-icon-up"></i></a></div>-->
+    </div>
+</div>
+
+
+ <script src="app/resource/layui/layui.js"></script>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script>
+//    layui.config({
+//        base: "https://www.00110.cn/app/resource/js/"
+//    }).use('news');
+</script>
+
+
+<!--fcooter-->
+<div class="footer">
+	<div class="main">
+		<div class="foot-nav">
+			<a href="help-detail-4-10.html">关于万能查</a>
+			<a href="help-detail-4-19.html">商务合作</a>
+			<a href="help-detail-3-8.html">帮助教程</a>
+			<a href="http://www.wannengcha.cn/search-cid-4.html">建议反馈</a>
+			<!--<a href="">投诉通道</a>-->
+		</div>
+		<div class="copyrigt">
+			版权所有:Copyright 2018-2020   万能查 <a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#ffffff;">渝ICP备18005295号-3号</a> 人杰网络科技有限公司
+		</div>
+	</div>
+</div>
+<script>
+ 	//百度推荐
+    /*var _hmt = _hmt || [];
+
+    (function() {
+
+        var hm = document.createElement("script");
+
+        hm.src = "https://hm.baidu.com/hm.js?6f5bedee03e918312fa675f39d86090f";
+
+        var s = document.getElementsByTagName("script")[0];
+
+        s.parentNode.insertBefore(hm, s);
+
+    })();*/
+
+</script>
+<script>
+    //百度链接自动推送
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script>
+    //360自动推送代码
+    (function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?5d05b6940624eca482626ed92e107703":"https://jspassport.ssl.qhimg.com/11.0.1.js?5d05b6940624eca482626ed92e107703";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
+<script>
+	//百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0a15da51b3649d8cfa750fdb8f433364";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="app/resource/js/jquery.cookie.js"></script>
+<script>
+	var advertise_token="";
+	if(advertise_token!=''){
+		$.cookie("advertise_token", advertise_token, {
+		  path : '/',//cookie的作用域
+		  expires : 1
+		});
+	}
+</script>
+
+
+</body>
+</html>
