@@ -187,10 +187,10 @@
 					}
 
 					$.ajax({
-						  url:"https://www.00110.cn?m=app&c=member&a=siginin",//当前ajax请求的地址
+						  url:"http://localhost:8081/api/v1/register",//当前ajax请求的地址
 						  type:'post',//请求的方式
 						  async:true,//是否异步  默认为异步
-						  data:{username:username,mobile:mobile,vercode:vercode,password:password,type:type},//当前ajax请求的参数  
+						  data:{"username":username,"mobile":mobile,"vercode":vercode,"password":password,type:type},//当前ajax请求的参数  
 						  dataType:"json",
 						  success: function(data){//发送成功时的代码执行
 								console.log(data)
