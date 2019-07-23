@@ -23,13 +23,13 @@
 <script src="app/resource/layer/layer.js"></script>
 	<script src="app/resource/js/bin/jsencrypt.min.js"></script>
 
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
+	<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+	<!-- <script>
         (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-9606766828005336",
             enable_page_level_ads: true
         });
-	</script>
+	</script> -->
 </head>
 <body>
 <div class="header">
@@ -303,20 +303,49 @@
     function search_button(){
         var keyword = $("input[name='keyword']").val();
         var type = $("#inputselect").val();
-        if (type == 'message') {
-            if(keyword !=""){
-                window.location.href = "" + 'information-search-index-' + encodeURI(keyword) + '.html'
-            }else{
-                window.location.href = "" + 'information-search.html';
-            }
-
-        } else if (type == 'datum') {
-            if(keyword !=""){
-                window.location.href = "" + 'datum-search-index-' + encodeURI(keyword) + '.html'
-            }else{
-                window.location.href = "" + 'datum-search.html';
-            }
-        }
+        $.ajax({
+			url:"http://localhost:8081/api/v1/user/companyUserList",
+			method:"post",
+			contentType:"json/application",
+            data: JSON.stringify({"pageIndex":1,"pageSize":10, "companyName":keyword}),//当前ajax请求的参数  
+            dataType: "json",
+			success:function(data){
+				dataResult = data.result.records;
+				
+				for (var i = 0; i <dataResult.length;i++) {
+					$("#company-search-list").append("<li>"+
+						"<div class='infocate-box'>"+
+							"<div class='info-inner'>"+
+								"<div class='i-logo'>"+
+									"<img src='"+dataResult[i].avatar+"' style='width:80px;height:80px;' class='img-hover' data-url='attachment/images/2019/03/L79S8Z77j7v9zZQ19H9qV9j5b19aQB.png' alt='查看公司实际控制人图片' onerror='this.src='https://www.00110.cn/app/resource/images/gs.png''>"+
+								"</div>"+
+								"<div class='i-title'><a href='information-detail-79.html'>"+dataResult[i].companyName+"</a></div>"+
+								"<div class='i-desc'>"+
+									dataResult[i].job+
+								"</div>"+
+								"<div class='i-nickname'>"+
+									dataResult[i].nickName+
+								"</div>"+
+							"</div>"+
+							"<div class='i-footer'>"+
+								"<div class='i-meta'>"+
+									"<div class='i-umber'><span class='text-info'>咨询量</span> 10次</div>"+
+									"<div class='i-price'><span class='pbox'>￥8.00</span>/次</div>"+
+								"</div>"+
+								"<div class='i-raty'>"+
+									"<span class='text-info'>权威评分：</span>"+
+									"<div class='wk' style='display: inline-block'>"+
+																			"<span class='atar_Show'>"+
+												"<p tip='5.0' style='width:100px;'></p></span>"+"<span>5.0</span>"+
+									"</div>"+
+								"</div>"+
+							"</div>"+
+						"</div>"+
+					"</li>");
+				}
+				
+			}
+		});
     }
 
     //跳转
@@ -431,427 +460,8 @@
 		<!--列表-->
 		<div class="infolist-wrap">
 			<div class="list-main">
-				<ul class="infocate-list">
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/03/L79S8Z77j7v9zZQ19H9qV9j5b19aQB.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/03/L79S8Z77j7v9zZQ19H9qV9j5b19aQB.png" alt="查看公司实际控制人图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-79.html">查看公司实际控制人</a></div>
-								<div class="i-desc">
-									根据企业名称查实际控制权人
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 0次</div>
-									<div class="i-price"><span class="pbox">￥8.00</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/03/K403xP4xAY84a0028z0Plyx413A4XB.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/03/K403xP4xAY84a0028z0Plyx413A4XB.png" alt="追踪企业最终受益人图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-78.html">追踪企业最终受益人</a></div>
-								<div class="i-desc">
-									根据企业名称追踪该企业最终受益人。
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 1次</div>
-									<div class="i-price"><span class="pbox">￥5.00</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/mOsZPznSnPyZYP7rORl0lN1xr0vm5O.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/mOsZPznSnPyZYP7rORl0lN1xr0vm5O.png" alt="姓名+手机号验证是否一致图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-77.html">姓名+手机号验证是否一致</a></div>
-								<div class="i-desc">
-									姓名+手机号验证是否一致
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 55次</div>
-									<div class="i-price"><span class="pbox">￥2.00</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/akxaeiuEha3QQuke55gcaU5y5DIIEG.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/akxaeiuEha3QQuke55gcaU5y5DIIEG.png" alt="驾驶证信息查询图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-72.html">驾驶证信息查询</a></div>
-								<div class="i-desc">
-									根据身份号查询领证时间、到期时间、驾驶证号等信息
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 1次</div>
-									<div class="i-price"><span class="pbox">￥6.80</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/NU8Fdm1KkUx3xGM3kxGDZgkKT2Uu8g.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/NU8Fdm1KkUx3xGM3kxGDZgkKT2Uu8g.png" alt="车牌号查询行驶证信息图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-71.html">车牌号查询行驶证信息</a></div>
-								<div class="i-desc">
-									通过车牌号查询车辆信息和状态
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 6次</div>
-									<div class="i-price"><span class="pbox">￥8.00</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/nFFsOpsglz4p3tfw3uPgSlK6v5sEX8.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/nFFsOpsglz4p3tfw3uPgSlK6v5sEX8.png" alt="验证姓名跟身份证号是否一致图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-70.html">验证姓名跟身份证号是否一致</a></div>
-								<div class="i-desc">
-									验证姓名跟身份证号是否一致
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 51次</div>
-									<div class="i-price"><span class="pbox">￥2.00</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/FR35qlvh7vl7o5l9PsuqlypKOp95hp.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/FR35qlvh7vl7o5l9PsuqlypKOp95hp.png" alt="姓名+手机号+身份证号验证是否一致图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-69.html">姓名+手机号+身份证号验证是否一致</a></div>
-								<div class="i-desc">
-									姓名+手机号+身份证号验证是否是同一个人
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 22次</div>
-									<div class="i-price"><span class="pbox">￥2.00</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/mJj0w4484zu45A34Jz0477h0z7w4I0.jpg" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/mJj0w4484zu45A34Jz0477h0z7w4I0.jpg" alt="姓名+银行卡号+身份证号验证是否一致图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-68.html">姓名+银行卡号+身份证号验证是否一致</a></div>
-								<div class="i-desc">
-									姓名+银行卡号+身份证号验证是否是同一个人
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 11次</div>
-									<div class="i-price"><span class="pbox">￥1.68</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/wPcuFNBEn7eyNCBEMEmfpRr7Mp8BmP.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/wPcuFNBEn7eyNCBEMEmfpRr7Mp8BmP.png" alt="车辆违章信息查询图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-67.html">车辆违章信息查询</a></div>
-								<div class="i-desc">
-									根据车牌，车架，发动机，车牌类型查询该车辆的违章信息
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 0次</div>
-									<div class="i-price"><span class="pbox">￥1.20</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/02/e4BaMs0lMw1W3Snx441WSy2Kh0AmHr.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/02/e4BaMs0lMw1W3Snx441WSy2Kh0AmHr.png" alt="车架号VIN查询车辆详细信息图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-66.html">车架号VIN查询车辆详细信息</a></div>
-								<div class="i-desc">
-									根据车架号VIN码查询车辆信息,车型、品牌、款型、生产日期、车身颜色等详情
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 0次</div>
-									<div class="i-price"><span class="pbox">￥2.80</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/01/UkmMsh01qcop4dpKhMr4c1qrKZ3qMq.png" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/01/UkmMsh01qcop4dpKhMr4c1qrKZ3qMq.png" alt="商品条码查询商品详细信息图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-51.html">商品条码查询商品详细信息</a></div>
-								<div class="i-desc">
-									该信息查询已接入中国物品编码中心系统，根据商品条码返回商品的名称、品牌、商标、规格、尺寸、重量、厂家等资料。
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 0次</div>
-									<div class="i-price"><span class="pbox">￥0.10</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
-										<li>
-						<div class="infocate-box">
-							<div class="info-inner">
-								<div class="i-logo">
-									<img src="attachment/images/2019/01/JUwegHwuO7wKUwb7kUCuSkk99ocwP7.jpg" style="width:80px;height:80px;" class="img-hover" data-url="attachment/images/2019/01/JUwegHwuO7wKUwb7kUCuSkk99ocwP7.jpg" alt="钢铁价格查询图片" onerror="this.src='https://www.00110.cn/app/resource/images/gs.png'">
-
-								</div>
-								<div class="i-title"><a href="information-detail-49.html">钢铁价格查询</a></div>
-								<div class="i-desc">
-									提供钢铁价格及涨跌数据，维度包含商品名称，行业，前日价格，昨日价格，单位，日涨跌，同比涨跌，日期。（注意：日期只能选择昨天之前，今日价格还未统计完）
-								</div>
-							</div>
-							<div class="i-footer">
-								<div class="i-meta">
-									<div class="i-umber"><span class="text-info">查询量</span> 0次</div>
-									<div class="i-price"><span class="pbox">￥0.68</span>/次</div>
-								</div>
-								<div class="i-raty">
-									<span class="text-info">权威评分：</span>
-																		<div class="wk" style="display: inline-block">
-											<span class="atar_Show">
-												<p tip="5.0"></p>
-											</span>
-											<span></span>
-									</div>
-																		<!-- 																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																		<span class="iconfont icon-star"></span>
-																											<span class="raty-span">5.0</span> -->
-								</div>
-							</div>
-						</div>
-					</li>
+				<ul class="infocate-list" id="company-search-list">
+										
 									</ul>
 								<div class="list-page">
 					<a href="information-search-created_time-desc-1.html" class="cur">1</a> <a href="information-search-created_time-desc-2.html">2</a> <a href="information-search-created_time-desc-2.html"><span class="iconfont icon-shouqi"></span> 下一页</a> <span>共2页　到第</span> <input type="text" class="page-input" value="1" id="goal"> <span>页</span> <a class="btn-jump">确定</a>

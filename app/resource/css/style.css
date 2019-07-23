@@ -842,6 +842,13 @@ i.f-ico-triangle-mb.cur{
 	float: right;
 	line-height: 20px;
 }
+.i-nickname{
+	float: left;
+	color: orangered;
+	margin-top: -20px;
+	line-height: 20px;
+	font-size: x-large;
+}
 .i-price .pbox{
 	color: #f21818;
 	font-size: 16px;
