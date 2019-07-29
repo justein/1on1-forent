@@ -116,6 +116,31 @@
         }
 
     }
+
+	function setCookie(name, value, expires, path, domain, secure) {
+			var curcookie = name + "=" + encodeURI(value)
+				+ ((expires) ? ";expires=" + expires.toGMTString() : "")
+				+ ((path) ? ";path=" + path : "")
+				+ ((domain) ? ";domain=" + domain : "")
+				+ ((secure) ? ";secure" : "");
+			document.cookie = curcookie;
+	} 
+
+	function getCookie(name) {
+		if (document.cookie.length > 0) {
+			start = document.cookie.indexOf(name + "=");
+			if (start != -1) {
+				start = start + name.length + 1;
+				end = document.cookie.indexOf(";", start);
+				if (end == -1) {
+					end = document.cookie.length;
+				}
+			}
+			return decodeURI(document.cookie.substring(start, end));
+		}
+		return "";
+	} 
+
 	//layui.use(['util', 'layer','jquery'], function(){
 			$("#btn").click(function(){
 					var mobile=$("#mobile").val()
@@ -205,6 +230,12 @@
 								  layer.msg(data.data+"正在跳转........",{icon:1});
 								  setTimeout(function(){
 									  //window.location.href="https://www.00110.cn?m=app&c=index&a=index";
+									  	/**用户登录信息放入cookie*/
+										  var login = true; 
+										var now = new Date(); 
+										now.setDate( now.getDate() + 30); 
+										setCookie("cu",data.result.nickname,now);
+										setCookie("cun",data.result.userNo,now);
 										window.location.href="index.html";
 								  }, 3000);
 
