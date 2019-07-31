@@ -25,7 +25,51 @@
 	<script src="app/resource/js/bin/jsencrypt.min.js"></script>
 
 	<script>
-        
+        function setCookie(name, value, expires, path, domain, secure) {
+			var curcookie = name + "=" + encodeURI(value)
+				+ ((expires) ? ";expires=" + expires.toGMTString() : "")
+				+ ((path) ? ";path=" + path : "")
+				+ ((domain) ? ";domain=" + domain : "")
+				+ ((secure) ? ";secure" : "");
+			document.cookie = curcookie;
+	} 
+
+	function getCookie(name) {
+		if (document.cookie.length > 0) {
+			start = document.cookie.indexOf(name + "=");
+			if (start != -1) {
+				start = start + name.length + 1;
+				end = document.cookie.indexOf(";", start);
+				if (end == -1) {
+					end = document.cookie.length;
+				}
+			}
+			return decodeURI(document.cookie.substring(start, end));
+		}
+		return "";
+	}
+
+	$(function() {
+	 
+	 var cun = getCookie("cun");
+	 // 根据用户是否登录显示登录注册还是个人信息
+		if( cun != "" ) {
+			var cu = getCookie("cu");
+			$(".t-menu").append("<ul class='t-menu-list'>"+
+        "<li><a href='collect.html' class='link-collect'><span class='iconfont icon-shoucang'></span> 收藏页</a></li>"+
+        "<li><a href='message-index.html'><span class='iconfont icon-tips'></span> 消息</a></li>"+
+        "<li><a href='personal-homepage.html' class='member-info'>欢迎您："+
+        "  <span id='currentNickName'>"+
+            cu+
+        "</span></a></li>"+
+        " <li><a href='index-m=app&amp;c=member&amp;a=index.html'><span class='iconfont icon-qidong'></span> 退出</a></li>"+
+        "</ul>");
+
+		}else{
+			window.location = 'index.html';
+		}
+	});
+
 	</script>
 </head>
 <body>
@@ -36,16 +80,7 @@
     <div class="wel-box"><a  href="index.html"   style="cursor:pointer;font-size:12px;color:#888888;">欢迎使用一比一</a></div>
 
     <div class="t-menu">
-      <ul class="t-menu-list">
-        <li><a href="collect.html" class="link-collect"><span class="iconfont icon-shoucang"></span> 收藏页</a></li>
-        <li><a href="message-index.html"><span class="iconfont icon-tips"></span> 消息</a></li>
-        <li><a href="personal-homepage.html" class="member-info">欢迎您：
-          <span id="currentNickname">
-            james_gosling@163.com
-            
-        </span></a></li>
-        <li><a href="index-m=app&amp;c=member&amp;a=index.html"><span class="iconfont icon-qidong"></span> 退出</a></li>
-      </ul>
+      
     </div>
   </div>
 </div>
